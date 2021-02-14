@@ -7,7 +7,7 @@ minetest.register_tool("repcomm:wand", {
   description = "RepComm's wand",
   inventory_image = "wand-64.png",
   on_use = function (itemstack, user, pointed_thing)
-    local pname = user.get_player_name(user)
+    local pname = user:get_player_name()
     
     minetest.chat_send_player(pname, pname .. " uses their wand")
     return nil
@@ -135,6 +135,37 @@ minetest.register_on_joinplayer(function(player)
       gravity = 1.1,
       jump = 1.1
     })
+
+    --add the gun reticle
+    local p_reticle = player:hud_add({
+      hud_elem_type = "image",
+      position      = {x = 0.5, y = 0.5},
+      offset        = {x = 0,   y = 0},
+      -- text          = "Hello world!",
+      text = "reticule_rifle.png",
+      alignment     = {x = 0, y = 0},  -- center aligned
+      scale         = {x = 1, y = 1}, -- covered later
+    })
+
+    --add the minimap
+    -- local p_minimap = player:hud_add({
+    --   hud_elem_type = "minimap",
+    --   position      = {x = 0.5, y = 0.5},
+    --   offset        = {x = 0,   y = 0},
+    --   -- text          = "Hello world!",
+    --   -- text = "reticule_rifle.png",
+    --   alignment     = {x = -0.5, y = 0},  -- center aligned
+    --   scale         = {x = 1, y = 1}, -- covered later
+    -- })
+
+    player:hud_set_flags({
+      crosshair = false,
+      minimap = true,
+      healthbar = false,
+      breathbar = false,
+      hotbar = false
+    })
+
   end)
 end)
 
@@ -146,3 +177,5 @@ minetest.register_chatcommand("repcomm", {
     return true, "You said " .. param .. "!"
   end,
 })
+
+dofile(minetest.get_modpath("repcomm") .. "/filltool.lua");

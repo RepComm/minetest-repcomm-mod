@@ -80,12 +80,29 @@ minetest.register_node("repcomm:bespinexterior01", {
   paramtype2 = "facedir",
   -- light_source = 12,
   tiles = {
-    "bespin-interior-floor-02-64.png",
-    "bespin-interior-floor-02-64.png",
-    "bespin-exterior-01-64.png",
-    "bespin-exterior-02-64.png",
-    "bespin-exterior-03-64.png",
-    "bespin-exterior-04-64.png",
+    "bespin-exterior-01-64.png"
+  },
+  groups = {cracky = 3},
+  sounds = sounds.stone
+})
+
+minetest.register_node("repcomm:bespinexterior02", {
+  description = "Bespin exterior face 02",
+  paramtype2 = "facedir",
+  -- light_source = 12,
+  tiles = {
+    "bespin-exterior-02-64.png"
+  },
+  groups = {cracky = 3},
+  sounds = sounds.stone
+})
+
+minetest.register_node("repcomm:bespinexterior03", {
+  description = "Bespin exterior face 03",
+  paramtype2 = "facedir",
+  -- light_source = 12,
+  tiles = {
+    "bespin-exterior-03-64.png"
   },
   groups = {cracky = 3},
   sounds = sounds.stone
